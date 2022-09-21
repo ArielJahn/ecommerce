@@ -3,21 +3,35 @@
 <title>Lojinha</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 <body>
 
-<!-- Sidebar -->
+<!-- lateral/categorias -->
 <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
   <button onclick="w3_close()" class="w3-bar-item w3-large">Fechar &times;</button>
-  <a href="#" class="w3-bar-item w3-button">Página principal</a>
-  <a href="#" class="w3-bar-item w3-button">Link 2</a>
-  <a href="#" class="w3-bar-item w3-button">Link 3</a>
+  <a href="loja.php" class="w3-bar-item w3-button">Página principal</a>
+  <?php
+  include('conexao.php');
+  $sqlcategoria = "SELECT * FROM categorias";
+  $sqlcategoria_acesso = $conn->query($sqlcategoria);
+  $categorias = $sqlcategoria_acesso->fetchAll(PDO::FETCH_ASSOC);
+
+  foreach($categorias as $categoria){
+    echo '<a href="#" class="w3-bar-item w3-button">' . $categoria['descricao'] . '</a>';
+  }
+  ?>
 </div>
 
 <!-- Page Content -->
 <div class="w3-teal">
   <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
   <div class="w3-container">
-    <h1>Lojinha</h1>
+    <h1>Lojinha
+     
+      <button type="button" class="btn btn-light"><a href="carrinho.php" class="w3-bar-item w3-button">Carrinho</a></button>
+     
+    </h1>
   </div>
 </div>
 
@@ -32,21 +46,18 @@ include('conexao.php');
   $sqlluan = $conn->query($sqlproduto);
   $produtos = $sqlluan->fetchAll(PDO::FETCH_ASSOC);
 
- // echo $produto['resumo'];
-  $vetor = array();
 
 // foreach(Array $aVetor as $valor)
 //echo [0]['resumo']
  foreach($produtos as $produto){
     // $produto[0]
-      echo($produto['id'] . '<br>');
-      echo($produto['descricao'] . '<br>');
-      echo($produto['caracteristicas'] . '<br>');
-      echo($produto['valor'] . '<br>');
-      echo($produto['estoque'] . '<br>');
-      echo($produto['imagem'] . '<br>');
-      echo($produto['resumo'] . '<br><br><br><br>');
-      
+      echo("ID: " . $produto['id'] . '<br>');
+      echo("Descrição: " . $produto['descricao'] . '<br>');
+      echo("Características: " . $produto['caracteristicas'] . '<br>');
+      echo("Valor: " . $produto['valor'] . '<br>');
+      echo("Estoque: " . $produto['estoque'] . '<br>');
+      echo("Resumo: " . $produto['resumo'] . '<br>');
+      echo '<button type="button" class="btn btn-success">Comprar</button> <br><br><br>';
  }
 ?>  
 </div>
