@@ -41,6 +41,7 @@
 <?php 
 include('conexao.php');
 
+
   $sqlproduto = "SELECT * FROM produtos";
   //sqlluan retorna pdo
   $sqlluan = $conn->query($sqlproduto);
@@ -50,6 +51,18 @@ include('conexao.php');
 // foreach(Array $aVetor as $valor)
 //echo [0]['resumo']
  foreach($produtos as $produto){
+  if(isset($_POST[$produto['id']])){
+  echo $_POST[$produto['id']];
+  $sql = "INSERT INTO carrinho(id, descricao,caracteristicas,valor,estoque,resumo)
+  values (:id, :descricao, :caracteristicas, :valor, :estoque, :resumo)";
+  $consulta = $conn->prepare($sql);
+  $resultado = $consulta->execute(array("id" => $produto['id'],
+  "descricao" => $produto['descricao'],
+  "caracteristicas" => $produto['caracteristicas'],
+  "valor" => $produto['valor'],
+  "estoque" => $produto['estoque'],
+  "resumo" => $produto['resumo']));
+ }
     // $produto[0]
       echo("ID: " . $produto['id'] . '<br>');
       echo("Descrição: " . $produto['descricao'] . '<br>');
@@ -57,8 +70,12 @@ include('conexao.php');
       echo("Valor: " . $produto['valor'] . '<br>');
       echo("Estoque: " . $produto['estoque'] . '<br>');
       echo("Resumo: " . $produto['resumo'] . '<br>');
-      echo '<button type="button" class="btn btn-success">Comprar</button> <br><br><br>';
+      echo ('<form method="post">
+               <input type="submit" value="'. $produto['id'] .'" name="'. $produto['id'] .'" class="btn btn-success">Comprar</input>
+            </form>      
+            <br><br><br>');
  }
+ 
 ?>  
 </div>
 
