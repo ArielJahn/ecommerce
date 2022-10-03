@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Set-2022 às 01:17
+-- Tempo de geração: 04-Out-2022 às 01:58
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -20,6 +20,21 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `meu_commerce`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `carrinho`
+--
+
+CREATE TABLE `carrinho` (
+  `id` int(11) NOT NULL,
+  `descricao` varchar(100) NOT NULL,
+  `caracteristicas` varchar(3000) NOT NULL,
+  `valor` float NOT NULL,
+  `estoque` int(11) NOT NULL,
+  `resumo` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -138,7 +153,9 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `descricao`, `caracteristicas`, `categoria_id`, `valor`, `estoque`, `imagem`, `resumo`) VALUES
-(1, 'Smartphone Redmi Note 10s 128GB/6GB global Onyx Gray', 'Armazenamento e ram 6 gb Ram + 128GB Rom Processador - MediaTek Helio G95 - cpu: frequência máxima da cpu de 2,05 GHz - gpu: arm Mali-G76 MC4 - Bateria e carregamento: 5.000 mAh (typ) - Carregamento rápido de 33 w Câmera - Câmera grande angular de 64 mp - Tamanho do sensor: 1/1,97\" - Tamanho do pixel: 0,7 m - f/1,79 - Câmera ultra-angular de 8 mp - fov 118° - f/2,2 - Câmera macro de 2 mp - f/2,4 - Sensor de profundidade de 2 mp - f/2,4 - Recursos de fotografia da câmera traseira - Modo de 64 mp - Modo noturno - Embelezador ia - Modo retrato com ia, bokeh e controle de profundidade - Recursos de vídeo da câmera traseira - Modo macro de vídeo - Vídeo em time-lapse pro - Vídeo em câmera lenta - Gravação de vídeo com a câmera traseira 4K, 3840 x 2160 a 30 fps 1080p, 1920 x 1080 a 60 fps 1080p, 1920 x 1080 a 30 fps - Câmera frontal de 13 mp - f/2,45 - Recursos de fotografia da câmera frontal - Disparo contínuo - Embelezador ia - Modo retrato com ia, bokeh e controle de profundidade - Recursos de vídeo da câmera frontal - Time-lapse - Gravação de vídeo com a câmera frontal 1080p, 1920 x 1080 a 30 fps 720p, 1280 x 720 a 30 fps Segurança: - Sensor de impressão digital no arco lateral - Desbloqueio por reconhecimento facial com ia Rede e conectividade: - Dual sim - Bandas de rede: - 2G: gsm 850, 900, 1.800, 1.900 MHz - 3G: wcdma B1/2/4/5/8 - 4G: lte fdd B1/2/3/4/5/7/8/20/28 - 4G: lte tdd B38/40/41 (de 2535 a 2655 MHz) - Redes sem fio - Wi-Fi de 2,4 GHz/5 GHz - Bluetooth 5.0 Navegação e posicionamento: - gps: L1 - Galileo: E1, Glonass: G1, Beidou Áudio: - Alto-falante duplo - Entrada para fone de ouvido de 3,5 mm - Certificação de áudio de alta resolução Sensores: - Sensor de proximidade - Sensor de luz ambiente - Acelerômetro - Giroscópio - Bússola eletrônica - Motor de vibração linear - ir Blaster Sistemas operacionais: - miui 12,5 no Android 11Dimensões - Altura: 160,46 mm - Largura: 74,5 mm - Espessura: 8,29 mm - Peso: 178,8 gConteúdo da embalagem: - Redmi Note 10S - Adaptador - Cabo USB Tipo c - Ferramenta de ejeção de sim - Capa de proteção - Guia de início rápido - Cartão de garantiaGarantia do Fornecedor 3 mesesItens Inclusos 1x Redmi Note 10S 128gb 6gb Cinza - Fonte - Cabo carregador - Extrator de chip - Capinha - ManualModelo Redmi Note 10S', 2, 1.599, 10, 'imagens/celular.jpg', 'Armazenamento e ram 6 gb Ram + 128GB Rom Processador - MediaTek Helio G95');
+(1, 'Smartphone Redmi Note 10s 128GB/6GB global Onyx Gray', 'Armazenamento e ram 6 gb Ram + 128GB Rom Processador - MediaTek Helio G95 - cpu: frequência máxima da cpu de 2,05 GHz - gpu: arm Mali-G76 MC4 - Bateria e carregamento: 5.000 mAh (typ) - Carregamento rápido de 33 w Câmera - Câmera grande angular de 64 mp - Tamanho do sensor: 1/1,97\" - Tamanho do pixel: 0,7 m - f/1,79 - Câmera ultra-angular de 8 mp - fov 118° - f/2,2 - Câmera macro de 2 mp - f/2,4 - Sensor de profundidade de 2 mp - f/2,4 - Recursos de fotografia da câmera traseira - Modo de 64 mp - Modo noturno - Embelezador ia - Modo retrato com ia, bokeh e controle de profundidade - Recursos de vídeo da câmera traseira - Modo macro de vídeo - Vídeo em time-lapse pro - Vídeo em câmera lenta - Gravação de vídeo com a câmera traseira 4K, 3840 x 2160 a 30 fps 1080p, 1920 x 1080 a 60 fps 1080p, 1920 x 1080 a 30 fps - Câmera frontal de 13 mp - f/2,45 - Recursos de fotografia da câmera frontal - Disparo contínuo - Embelezador ia - Modo retrato com ia, bokeh e controle de profundidade - Recursos de vídeo da câmera frontal - Time-lapse - Gravação de vídeo com a câmera frontal 1080p, 1920 x 1080 a 30 fps 720p, 1280 x 720 a 30 fps Segurança: - Sensor de impressão digital no arco lateral - Desbloqueio por reconhecimento facial com ia Rede e conectividade: - Dual sim - Bandas de rede: - 2G: gsm 850, 900, 1.800, 1.900 MHz - 3G: wcdma B1/2/4/5/8 - 4G: lte fdd B1/2/3/4/5/7/8/20/28 - 4G: lte tdd B38/40/41 (de 2535 a 2655 MHz) - Redes sem fio - Wi-Fi de 2,4 GHz/5 GHz - Bluetooth 5.0 Navegação e posicionamento: - gps: L1 - Galileo: E1, Glonass: G1, Beidou Áudio: - Alto-falante duplo - Entrada para fone de ouvido de 3,5 mm - Certificação de áudio de alta resolução Sensores: - Sensor de proximidade - Sensor de luz ambiente - Acelerômetro - Giroscópio - Bússola eletrônica - Motor de vibração linear - ir Blaster Sistemas operacionais: - miui 12,5 no Android 11Dimensões - Altura: 160,46 mm - Largura: 74,5 mm - Espessura: 8,29 mm - Peso: 178,8 gConteúdo da embalagem: - Redmi Note 10S - Adaptador - Cabo USB Tipo c - Ferramenta de ejeção de sim - Capa de proteção - Guia de início rápido - Cartão de garantiaGarantia do Fornecedor 3 mesesItens Inclusos 1x Redmi Note 10S 128gb 6gb Cinza - Fonte - Cabo carregador - Extrator de chip - Capinha - ManualModelo Redmi Note 10S', 2, 1.599, 10, 'imagens/celular.jpg', 'Armazenamento e ram 6 gb Ram + 128GB Rom Processador - MediaTek Helio G95'),
+(2, 'helicopter', 'luan pedro eric caio andrey ariel', 13, 667, 3, '', 'torno eletronico 1000wats'),
+(3, 'sony cleverson sherek', 'uapapapapapa', 32, 69, 1, '', 'palio voando');
 
 -- --------------------------------------------------------
 
@@ -263,7 +280,7 @@ ALTER TABLE `paginas`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
